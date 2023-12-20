@@ -15,7 +15,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
   int _time = 0;
   bool _isRunning = false;
 
-  List<String> _latTimes = [];
+  List<String> _lapTimes = [];
 
   void _clickBUtton() {
     _isRunning = !_isRunning;
@@ -37,6 +37,13 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
 
   void _pause() {
     _timer?.cancel();
+  }
+
+  void _reset() {
+    _isRunning = false;
+    _timer?.cancel();
+    _lapTimes.clear();
+    _time = 0;
   }
 
   @override
@@ -82,7 +89,11 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
             children: [
               FloatingActionButton(
                 backgroundColor: Colors.orange,
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    _reset();
+                  });
+                },
                 child: const Icon(Icons.refresh),
               ),
               FloatingActionButton(
