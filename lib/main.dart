@@ -1,13 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-
-import 'stop_watch_screen.dart';
+import 'package:stop_watch/ui/view/stop_watch_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:stop_watch/viewmodel/stop_watch_view_model.dart';
 
 void main() {
-
-
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider.value(
+      value: StopWatchViewModel(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
